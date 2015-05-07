@@ -9,4 +9,14 @@ public class longjump : MonoBehaviour {
 			GetComponent<Rigidbody> ().AddForce (Vector3.up * 100);		
 		}
 	}
+
+	void OnCollisionsEnter(Collision other){
+		if (other.gameObject.tag == "tabrak") {
+			other.gameObject.audio.Play ();
+		}
+	}
+	void OnCollisionExit(Collision other) {
+	}
 }
+
+

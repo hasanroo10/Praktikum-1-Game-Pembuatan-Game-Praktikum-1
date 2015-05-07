@@ -2,18 +2,23 @@
 using System.Collections;
 
 public class player : MonoBehaviour {
-	
+	public AudioClip lagu;
+	public AudioClip tabrak;
 	Vector3 position;
 	bool jump;
 	float speedmove=50;
 	float speedjump=300;
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.A)) {
+			audio.clip = tabrak;
+			audio.Play();
 			position= transform.position+Vector3.left;
 			this.gameObject.transform.position = Vector3.MoveTowards (transform.position, position, speedmove * Time.deltaTime);
 		}
 		
 		if (Input.GetKeyDown (KeyCode.D)) {
+			audio.clip = lagu;
+			audio.Play();
 			position= transform.position+Vector3.right;
 			this.gameObject.transform.position = Vector3.MoveTowards (transform.position, position, speedmove * Time.deltaTime);
 		}
@@ -27,7 +32,9 @@ public class player : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision other){
 		//jump = false;;
-		Debug.Log ("Tersentuh");
+
+
+	
 	}
 	
 	void OnCollisionExit(Collision other){
